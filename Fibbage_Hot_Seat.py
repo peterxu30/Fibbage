@@ -7,12 +7,24 @@ class Player:
 		self.name = name
 		self.score = 0
 
+	# Returns player name
+	def get_name():
+		return self.name
+
+	# Returns player's current score
+	def get_score():
+		return self.score
+
+	# Add a point to player score
 	def get_point(self, points=1):
 		self.score += points
 
 class Game:
 
+	# List of questions
 	questions = Questions #{1: [Question, Answer]}
+	
+	# Question Number
 	q_n = 1
 
 	def __init__(self):
@@ -23,18 +35,23 @@ class Game:
 		self.lies = {} #{1: lie, 2: lie} keys are player numbers, lies are strings. Changes every question
 		self.answers = {} #{1: answer, 2: answer...} key = player number, answer = string. Changes every question
 
+	# Adds a player to the current game
 	def add_player(self, name):
 		self.players[len(self.players)+1] = Player(name)
 
+	# Returns a player
 	def get_player(self, player_num):
 		return self.players[player_num]
 
+	# Returns a player's name
 	def player_name(self, player_num):
-		return self.get_player(player_num).name
+		return self.get_player(player_num).get_name()
 
+	# Returns a player's score
 	def player_score(self, player_num):
-		return self.get_player(player_num).score
+		return self.get_player(player_num).get_score()
 
+	# Return's the current question
 	def current_question(self):
 		return self.questions[self.question_number]
 
