@@ -35,6 +35,9 @@ class Game:
 		self.lies = {} #{1: lie, 2: lie} keys are player numbers, lies are strings. Changes every question
 		self.answers = {} #{1: answer, 2: answer...} key = player number, answer = string. Changes every question
 
+
+	# PLAYER RELATED METHODS -------------------------------
+
 	# Adds a player to the current game
 	def add_player(self, name):
 		self.players[len(self.players)+1] = Player(name)
@@ -54,6 +57,9 @@ class Game:
 	# Return's the current question
 	def current_question(self):
 		return self.questions[self.question_number]
+
+
+	# GAMEPLAY RELATED METHODS -------------------------------
 
 	def submit_lie(self, player_num, lie):
 		self.lies[0] = self.get_real_answer()
@@ -85,10 +91,12 @@ class Game:
 		else:
 			return '%s is incorrect!'%player.name
 
-
 	def score_check(self):
 		for player in self.players:
 			print(self.player_name(player), ': ', self.player_score(player))
+
+
+	# GAME PHASE RELATED METHODS -------------------------------
 
 	def initialization_phase(self):
 		os.system('cls')
@@ -146,6 +154,8 @@ class Game:
 		#input('Press anything to continue')
 
 		self.end_phase()
+
+# MAIN METHOD -------------------------------
 
 game = Game()
 
